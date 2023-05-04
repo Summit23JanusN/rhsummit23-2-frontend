@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rhsummit23-2-poi-map-app-dev
+  annotations:
+    argocd/app-name: rhsummit23-2-poi-map-app-dev
+    backstage.io/kubernetes-id: rhsummit23-2-poi-map-app-dev
+    backstage.io/kubernetes-namespace: rhsummit23-2
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=rhsummit23-2-poi-map-app-dev'
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: Summit23JanusN/rhsummit23-2-frontend
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.summit23bis.17gd.p1.openshiftapps.com/dev-pipelines/ns/rhsummit23-2/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.summit23bis.17gd.p1.openshiftapps.com/k8s/ns/rhsummit23-2/deployments/poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.summit23bis.17gd.p1.openshiftapps.com/#https://github.com/Summit23JanusN/rhsummit23-2-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://poi-map-app-rhsummit23-2.apps.summit23bis.17gd.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:rhsummit23"
+  system: workshop-system-rhsummit23-2
+  consumesApis:
+    - gateway-api-rhsummit23-2
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-rhsummit23-2
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:rhsummit23"
